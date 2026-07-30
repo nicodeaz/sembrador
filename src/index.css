@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* Modo Accesible: Texto aumentado, alto contraste, mayor grosor */
+.high-accessibility {
+  font-size: 1.125rem; /* ~18px base */
+}
+
+.high-accessibility body {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.high-accessibility h1 {
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+}
+
+.high-accessibility h2 {
+  font-size: 1.75rem !important;
+  font-weight: 900 !important;
+}
+
+.high-accessibility h3 {
+  font-size: 1.5rem !important;
+  font-weight: 900 !important;
+}
+
+.high-accessibility h4 {
+  font-size: 1.35rem !important;
+  font-weight: 900 !important;
+}
+
+.high-accessibility button,
+.high-accessibility a,
+.high-accessibility input,
+.high-accessibility select,
+.high-accessibility textarea {
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  min-height: 48px !important;
+}
+
+.high-accessibility .text-slate-500,
+.high-accessibility .text-slate-600 {
+  color: #0f172a !important; /* Maximiza el contraste contra fondos claros */
+  font-weight: 700 !important;
+}
+
+.high-accessibility .text-green-200,
+.high-accessibility .text-green-300 {
+  color: #ffffff !important; /* Maximiza legibilidad en banners oscuros */
+  font-weight: 700 !important;
+}
+
+.high-accessibility .border-slate-200,
+.high-accessibility .border-slate-300 {
+  border-width: 3px !important;
+  border-color: #334155 !important;
+}
+
+/* Modo Noche (Tema Oscuro Nocturno) para El Sembrador */
+.dark-theme {
+  background-color: #090d16 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark-theme .bg-white {
+  background-color: #111827 !important;
+  color: #f8fafc !important;
+}
+
+.dark-theme .bg-slate-50,
+.dark-theme .bg-slate-100 {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark-theme .border-slate-200,
+.dark-theme .border-slate-300 {
+  border-color: #334155 !important;
+}
+
+.dark-theme .text-slate-900,
+.dark-theme .text-slate-800,
+.dark-theme .text-slate-700 {
+  color: #f8fafc !important;
+}
+
+.dark-theme .text-slate-600,
+.dark-theme .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+
+.dark-theme input::placeholder,
+.dark-theme textarea::placeholder {
+  color: #64748b !important;
+}
+
+.dark-theme table tr:hover {
+  background-color: #1e293b !important;
+}
+
+.dark-theme thead tr {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+}
+
+.dark-theme .bg-green-50 {
+  background-color: #064e3b !important;
+  color: #ecfdf5 !important;
+}
+
+.dark-theme .bg-orange-50 {
+  background-color: #7c2d12 !important;
+  color: #ffedd5 !important;
+}
+
+.dark-theme .bg-blue-50 {
+  background-color: #1e3a8a !important;
+  color: #dbeafe !important;
+}
+
+.dark-theme .bg-amber-50 {
+  background-color: #78350f !important;
+  color: #fef3c7 !important;
+}
+
+.dark-theme .bg-purple-50 {
+  background-color: #581c87 !important;
+  color: #f3e8ff !important;
+}
+
+.dark-theme .bg-red-50 {
+  background-color: #7f1d1d !important;
+  color: #fee2e2 !important;
+}
+
+

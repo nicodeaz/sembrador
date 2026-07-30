@@ -1,0 +1,52 @@
+# SembraBB · El Sembrador — configuración Apache para https://okto.ie/sembrador/
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /sembrador/
+
+  # No reescribir archivos o carpetas que sí existen
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Fallback estilo SPA: cualquier otra ruta dentro de /sembrador/ sirve index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Tipo MIME correcto para el manifest de la PWA
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType application/javascript .js
+  AddType image/png .png
+</IfModule>
+
+# Compresión de texto
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Seguridad básica
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Assets con hash en el nombre (Vite): cache larga e inmutable
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Íconos: cache moderada
+  <FilesMatch "\.(png|jpg|jpeg|svg|webp|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # El service worker nunca debe quedar cacheado (para que las actualizaciones lleguen)
+  <Files "sw.js">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </Files>
+
+  # El documento principal y el manifest siempre frescos
+  <FilesMatch "^(index\.html|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

@@ -1,0 +1,6 @@
+{
+  "name": "El Sembrador - Gestor Avícola",
+  "description": "Aplicación de gestión y control de costos para recría de pollitas BB (Día 0 a Semana 16) para El Sembrador",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
