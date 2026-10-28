@@ -341,12 +341,12 @@ export const ConsolidatedView: React.FC<ConsolidatedViewProps> = ({
             </p>
           </div>
 
-          <div className="bg-orange-50 p-4 rounded-2xl border border-orange-200 text-center">
-            <p className="text-xs font-bold text-orange-900 uppercase">Gasto Período Filtrado</p>
+          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 border-l-4 border-l-orange-400 text-center">
+            <p className="text-xs font-bold text-slate-500 uppercase">Gasto Período Filtrado</p>
             <p className="text-3xl font-black text-orange-600 mt-1">
               {formatCurrency(periodMetrics.totalPeriodCost)}
             </p>
-            <p className="text-xs text-orange-800 mt-1 font-semibold">
+            <p className="text-xs text-slate-500 mt-1 font-semibold">
               {preset === 'all' ? 'Inversión global acumulada' : 'Total operacional en rango'}
             </p>
           </div>
@@ -361,12 +361,12 @@ export const ConsolidatedView: React.FC<ConsolidatedViewProps> = ({
             </p>
           </div>
 
-          <div className="bg-green-50 p-4 rounded-2xl border border-green-200 text-center">
-            <p className="text-xs font-bold text-green-900 uppercase">Costo Promedio Viva</p>
+          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 border-l-4 border-l-green-600 text-center">
+            <p className="text-xs font-bold text-slate-500 uppercase">Costo Promedio Viva</p>
             <p className="text-3xl font-black text-green-800 mt-1">
               {formatCurrency(consolidated.avgCostPerPullet)}
             </p>
-            <p className="text-xs text-green-700 mt-1 font-semibold">
+            <p className="text-xs text-slate-500 mt-1 font-semibold">
               Consolidado por ave
             </p>
           </div>
@@ -592,94 +592,100 @@ export const ConsolidatedView: React.FC<ConsolidatedViewProps> = ({
               <thead>
                 <tr className="bg-slate-100 text-xs font-black uppercase text-slate-700 border-b-2 border-slate-200">
                   <th className="p-3 w-1/3">Métrica de Rendimiento</th>
-                  <th className="p-3 w-1/3 bg-green-50 text-green-900 border-x border-slate-200">
-                    {summaryA.batch.name}
+                  <th className="p-3 w-1/3 text-green-800 border-x border-slate-200">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-green-700 inline-block"></span>
+                      {summaryA.batch.name}
+                    </span>
                   </th>
-                  <th className="p-3 w-1/3 bg-orange-50 text-orange-900">
-                    {summaryB.batch.name}
+                  <th className="p-3 w-1/3 text-orange-800">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-orange-600 inline-block"></span>
+                      {summaryB.batch.name}
+                    </span>
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200 text-sm font-semibold text-slate-800">
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Raza / Genética</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200 font-extrabold text-slate-900">{summaryA.batch.breed}</td>
-                  <td className="p-3 bg-orange-50/50 font-extrabold text-slate-900">{summaryB.batch.breed}</td>
+                  <td className="p-3 border-x border-slate-200 font-extrabold text-slate-900">{summaryA.batch.breed}</td>
+                  <td className="p-3 font-extrabold text-slate-900">{summaryB.batch.breed}</td>
                 </tr>
 
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Edad Actual (Recría)</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200 font-extrabold text-green-800">
+                  <td className="p-3 border-x border-slate-200 font-extrabold text-green-800">
                     Semana {summaryA.currentAgeWeeks} (+{summaryA.currentAgeDaysRemainder}d)
                   </td>
-                  <td className="p-3 bg-orange-50/50 font-extrabold text-orange-800">
+                  <td className="p-3 font-extrabold text-orange-800">
                     Semana {summaryB.currentAgeWeeks} (+{summaryB.currentAgeDaysRemainder}d)
                   </td>
                 </tr>
 
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Aves BB Iniciales</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200">{summaryA.batch.initialCount.toLocaleString()} aves</td>
-                  <td className="p-3 bg-orange-50/50">{summaryB.batch.initialCount.toLocaleString()} aves</td>
+                  <td className="p-3 border-x border-slate-200">{summaryA.batch.initialCount.toLocaleString()} aves</td>
+                  <td className="p-3">{summaryB.batch.initialCount.toLocaleString()} aves</td>
                 </tr>
 
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Stock Vivas Actuales</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200 font-bold text-slate-900">{summaryA.currentLiveCount.toLocaleString()} aves</td>
-                  <td className="p-3 bg-orange-50/50 font-bold text-slate-900">{summaryB.currentLiveCount.toLocaleString()} aves</td>
+                  <td className="p-3 border-x border-slate-200 font-bold text-slate-900">{summaryA.currentLiveCount.toLocaleString()} aves</td>
+                  <td className="p-3 font-bold text-slate-900">{summaryB.currentLiveCount.toLocaleString()} aves</td>
                 </tr>
 
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Bajas Acumuladas (%)</td>
-                  <td className={`p-3 bg-green-50/50 border-x border-slate-200 font-black ${summaryA.isCriticalMortality ? 'text-red-600' : 'text-slate-800'}`}>
+                  <td className={`p-3 border-x border-slate-200 font-black ${summaryA.isCriticalMortality ? 'text-red-600' : 'text-slate-800'}`}>
                     {summaryA.totalMortality} aves ({summaryA.mortalityRate}%)
                   </td>
-                  <td className={`p-3 bg-orange-50/50 font-black ${summaryB.isCriticalMortality ? 'text-red-600' : 'text-slate-800'}`}>
+                  <td className={`p-3 font-black ${summaryB.isCriticalMortality ? 'text-red-600' : 'text-slate-800'}`}>
                     {summaryB.totalMortality} aves ({summaryB.mortalityRate}%)
                   </td>
                 </tr>
 
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Gasto Alimento Acum.</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200">{formatCurrency(compareBreakdown?.breakdownA.alimento || 0)}</td>
-                  <td className="p-3 bg-orange-50/50">{formatCurrency(compareBreakdown?.breakdownB.alimento || 0)}</td>
+                  <td className="p-3 border-x border-slate-200">{formatCurrency(compareBreakdown?.breakdownA.alimento || 0)}</td>
+                  <td className="p-3">{formatCurrency(compareBreakdown?.breakdownB.alimento || 0)}</td>
                 </tr>
 
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Gasto Vacunas Acum.</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200">{formatCurrency(compareBreakdown?.breakdownA.vacunas || 0)}</td>
-                  <td className="p-3 bg-orange-50/50">{formatCurrency(compareBreakdown?.breakdownB.vacunas || 0)}</td>
+                  <td className="p-3 border-x border-slate-200">{formatCurrency(compareBreakdown?.breakdownA.vacunas || 0)}</td>
+                  <td className="p-3">{formatCurrency(compareBreakdown?.breakdownB.vacunas || 0)}</td>
                 </tr>
 
                 <tr>
                   <td className="p-3 font-bold text-slate-700">Gasto Calefacción Acum.</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200">{formatCurrency(compareBreakdown?.breakdownA.calefaccion || 0)}</td>
-                  <td className="p-3 bg-orange-50/50">{formatCurrency(compareBreakdown?.breakdownB.calefaccion || 0)}</td>
+                  <td className="p-3 border-x border-slate-200">{formatCurrency(compareBreakdown?.breakdownA.calefaccion || 0)}</td>
+                  <td className="p-3">{formatCurrency(compareBreakdown?.breakdownB.calefaccion || 0)}</td>
                 </tr>
 
                 <tr className="bg-slate-50 font-black">
                   <td className="p-3 text-slate-900">Total Inversión Acumulada</td>
-                  <td className="p-3 bg-green-100/60 border-x border-slate-200 text-green-950">{formatCurrency(summaryA.totalInvestment)}</td>
-                  <td className="p-3 bg-orange-100/60 text-orange-950">{formatCurrency(summaryB.totalInvestment)}</td>
+                  <td className="p-3 border-x border-slate-200 text-green-800">{formatCurrency(summaryA.totalExpenses)}</td>
+                  <td className="p-3 text-orange-800">{formatCurrency(summaryB.totalExpenses)}</td>
                 </tr>
 
                 <tr className="bg-slate-100 font-black text-base">
                   <td className="p-3 text-slate-900">Costo Actual por Pollita Viva</td>
-                  <td className="p-3 bg-green-200/70 border-x border-slate-300 text-green-900 font-black">
+                  <td className="p-3 border-x border-slate-300 text-green-800 font-black">
                     {formatCurrency(summaryA.currentUnitCost)} / ave
                   </td>
-                  <td className="p-3 bg-orange-200/70 text-orange-900 font-black">
+                  <td className="p-3 text-orange-800 font-black">
                     {formatCurrency(summaryB.currentUnitCost)} / ave
                   </td>
                 </tr>
 
                 <tr className="bg-slate-50 font-black">
                   <td className="p-3 text-slate-800">Proyección Final (Sem. 16)</td>
-                  <td className="p-3 bg-green-50/50 border-x border-slate-200 text-emerald-800">
-                    ~ {formatCurrency(summaryA.projectedCostAt16Weeks)} / ave
+                  <td className="p-3 border-x border-slate-200 text-emerald-800">
+                    ~ {formatCurrency(summaryA.projectedCostWeek16)} / ave
                   </td>
-                  <td className="p-3 bg-orange-50/50 text-amber-800">
-                    ~ {formatCurrency(summaryB.projectedCostAt16Weeks)} / ave
+                  <td className="p-3 text-amber-800">
+                    ~ {formatCurrency(summaryB.projectedCostWeek16)} / ave
                   </td>
                 </tr>
               </tbody>

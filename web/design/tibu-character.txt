@@ -1,0 +1,12 @@
+El Sembrador — Tibu integrado en contacto
+Fecha: 2026-10-28
+Modo: herramienta integrada ImageGen, edición con fondo transparente.
+Fuentes: C:/Users/dev/Downloads/drive-download-20261028T200551Z-1-001/IMG_9013.PNG (identidad principal) y IMG_9015.PNG (cuerpo/pelaje).
+Generado: C:/Users/dev/.codex/generated_images/01a18422-363c-7dd2-80b9-36eccd5056fb/exec-94144e1f-d736-4c22-ad8a-83f7643f5356.png
+Final: web/assets/characters/tibu.webp
+Tamaño: 1100x733. RGBA con transparencia real; original generado 1536x1024, alpha 0..254 y 803053 píxeles totalmente transparentes.
+El usuario pidió a Tibu integrado en contacto. Se recompuso una pose relajada, sin gafas, conservando rasgos y pelaje de referencia. No es una fotografía documental sin editar. Los originales no se modificaron. Conversión/optimización y reducción con Pillow, alpha conservado.
+
+PROMPT:
+Use case: identity-preserve / background-extraction. Asset type: isolated photorealistic real pet for the WhatsApp contact section of an agricultural website. Input 1 (IMG_9013 screenshot) is the primary identity and facial/coat reference for Tibu, the real sable brown and white collie lying on grass. Input 2 (IMG_9015 screenshot) is supporting reference for the same dog's full coat/body; ignore the man, truck and glasses. Extract and naturally recompose ONLY this same dog, Tibu, in a relaxed lying pose with head slightly raised and facing toward the viewer's LEFT. Entire body, paws, ears and long furry tail must fit inside the frame with generous transparent padding. Preserve his exact distinctive long narrow collie face, natural eyes, white facial blaze, brown sable head and back, full white chest ruff, white legs and coat markings. Natural proportions and fur, warm natural daylight, realistic photographic detail. NO glasses, no human, no grass, no scenery, no props, no text, no halo, no solid background or checkerboard, no cartoon or 3D style. Truly transparent alpha background. Only the dog, softly isolated, with no baked floor or large shadow. Landscape composition, dog lying along the lower two-thirds with its head on the left; full animal visible.
+

@@ -1,0 +1,11 @@
+{
+  "name": "el-sembrador-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "check": "node --check main.js && node --check scripts/build.mjs && node --check scripts/serve.mjs"
+  }
+}

@@ -1,0 +1,34 @@
+name: sembrador
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: sembrador:${SEMBRADOR_RELEASE:?Set a unique release name}
+    container_name: sembrador-app
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8085:80"
+    environment:
+      SEMBRADOR_DATA_DIR: /var/lib/sembrador
+      SEMBRADOR_AUTH_MODE: email
+      SEMBRADOR_OWNER_EMAIL: agroserv.uruguay@gmail.com
+      SEMBRADOR_MAIL_CONFIG: /var/lib/sembrador/mail.json
+    volumes:
+      - /home/ubuntu/sembrador-private/data:/var/lib/sembrador
+      - /home/ubuntu/sembrador-private/backups:/backups
+    read_only: true
+    tmpfs:
+      - /tmp:mode=1777,size=64m
+      - /var/run/apache2
+      - /var/lock/apache2
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 128
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

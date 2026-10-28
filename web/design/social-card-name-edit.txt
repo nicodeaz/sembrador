@@ -1,0 +1,11 @@
+El Sembrador — corrección de nombre en tarjeta social
+Mode: built-in image_gen tool.
+Date: 2026-10-28
+Edit target: web/assets/social-card.jpg
+Final file: web/assets/social-card.jpg (1200x630 JPEG)
+Generated source: C:\Users\dev\.codex\generated_images\01a183f0-818f-7b92-b19c-6ef45f3f3e6e\exec-dd00b708-9d97-4e2c-92bc-d63da0bebf8b.png
+Confirmed displayed name: Julio Díaz (without Santiago).
+
+Prompt:
+Use case: precise-object-edit. Edit target: supplied El Sembrador social sharing card. Change ONLY the small personal-name line that currently reads 'Julio Santiago Díaz' so that it reads exactly 'Julio Díaz', including the accent in Díaz. Keep the name left-aligned at the existing location, same letter spacing, serif font, dark green color and font size; removing Santiago should simply shorten the line. Preserve EVERYTHING ELSE without changes: complete original logo shapes and colors, photograph of chickens and farm, cream left background, curved orange dividing line, main El Sembrador heading, 'Recría · Nutrición · Asesoramiento' line, italic slogan 'El campo, en buenas manos.', crop, color grading, image proportions. Do not add location, text, people or other content. Exact original composition and 1200x630 aspect ratio.
+

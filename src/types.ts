@@ -7,10 +7,71 @@ export interface Batch {
   initialCount: number; // Cantidad inicial de pollitas BB
   initialCostPerPullet: number; // Costo de compra inicial por pollita BB (ej: $1.20)
   breed?: string; // Raza ej: "Hy-Line Brown", "Lohmann Brown", "Cobb"
+  barn?: string;
   notes?: string;
-  status: 'active' | 'completed' | 'archived';
+  status: 'planned' | 'active' | 'completed' | 'archived';
+  endDate?: string;
+  expectedExitDate?: string;
+  ageOnArrivalDays?: number;
   createdAt: string;
 }
+
+export interface Departure {
+  id: string;
+  batchId: string;
+  date: string;
+  count: number;
+  amount: number;
+  notes: string;
+}
+
+export interface FarmTask {
+  id: string;
+  title: string;
+  date: string;
+  batchId?: string;
+  kind: 'limpieza' | 'sanidad' | 'mantenimiento' | 'otro';
+  status: 'pending' | 'done';
+  completedDate?: string;
+  cost: number;
+  notes: string;
+}
+
+export interface StockMovement {
+  id: string;
+  type: 'purchase' | 'sale' | 'feed' | 'production' | 'expense';
+  date: string;
+  product: string;
+  quantityKg: number;
+  amount: number;
+  batchId?: string;
+  purchaseId?: string;
+  quantityUnit?: 'kg' | 'bolsas';
+  bagWeightKg?: number;
+  contact: string;
+  notes: string;
+  ingredients?: { product: string; quantityKg: number }[];
+}
+
+export interface MediaAsset {
+  id: string;
+  title: string;
+  category: 'logo' | 'etiqueta' | 'flyer' | 'servicios';
+  mime: string;
+  size: number;
+  createdAt: string;
+}
+
+export interface FarmData {
+  schemaVersion: 3;
+  batches: Batch[];
+  records: OperationRecord[];
+  departures: Departure[];
+  tasks: FarmTask[];
+  movements: StockMovement[];
+}
+
+export const emptyFarm = (): FarmData => ({ schemaVersion: 3, batches: [], records: [], departures: [], tasks: [], movements: [] });
 
 export interface OperationRecord {
   id: string;

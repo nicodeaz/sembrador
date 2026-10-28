@@ -1,8 +1,9 @@
-import { Batch, OperationRecord, BatchSummary, FarmConsolidated, CategoryType } from '../types';
+import { Batch, OperationRecord, BatchSummary, FarmConsolidated, CategoryType, Departure } from '../types';
+import { today } from './dates';
 
 export const TARGET_DAYS = 112; // 16 semanas * 7 días
 
-export function calculateDaysBetween(startDateStr: string, endDateStr: string = new Date().toISOString().split('T')[0]): number {
+export function calculateDaysBetween(startDateStr: string, endDateStr: string = today()): number {
   const start = new Date(startDateStr);
   const end = new Date(endDateStr);
   const diffTime = end.getTime() - start.getTime();
@@ -10,9 +11,9 @@ export function calculateDaysBetween(startDateStr: string, endDateStr: string = 
   return Math.max(0, diffDays);
 }
 
-export function calculateBatchSummary(batch: Batch, records: OperationRecord[]): BatchSummary {
+export function calculateBatchSummary(batch: Batch, records: OperationRecord[], departures: Departure[] = []): BatchSummary {
   const batchRecords = records.filter(r => r.batchId === batch.id);
-  const currentAgeDays = calculateDaysBetween(batch.startDate);
+  const currentAgeDays = calculateDaysBetween(batch.startDate, batch.endDate || today()) + (batch.ageOnArrivalDays || 0);
   const currentAgeWeeks = Math.floor(currentAgeDays / 7);
   const currentAgeDaysRemainder = currentAgeDays % 7;
   const progressPercent = Math.min(100, Math.round((currentAgeDays / TARGET_DAYS) * 100));
@@ -37,7 +38,8 @@ export function calculateBatchSummary(batch: Batch, records: OperationRecord[]):
     costsByCategory[r.category] = (costsByCategory[r.category] || 0) + cost;
   });
 
-  const currentLiveCount = Math.max(0, batch.initialCount - totalMortality);
+  const departed = departures.filter(d => d.batchId === batch.id).reduce((sum, d) => sum + d.count, 0);
+  const currentLiveCount = batch.status === 'planned' ? 0 : Math.max(0, batch.initialCount - totalMortality - departed);
   const mortalityRate = batch.initialCount > 0 ? (totalMortality / batch.initialCount) * 100 : 0;
   const isCriticalMortality = mortalityRate >= 2.0; // Umbral crítico del 2%
 
@@ -56,7 +58,8 @@ export function calculateBatchSummary(batch: Batch, records: OperationRecord[]):
   if (remainingDays > 0) {
     // Estimación empírica para recría de pollitas:
     // Alimentación típica acumulada a sem 16 es aprox $3.80 - $4.50 total por ave.
-    const estimatedDailyCostPerBird = 0.042; // $0.042 USD/moneda local por pollita/día
+    const estimatedDailyCostPerBird = currentAgeDays > 0 && currentLiveCount > 0
+      ? totalOperationalExpenses / currentAgeDays / currentLiveCount : 0;
     const remainingEstimatedCostPerBird = remainingDays * estimatedDailyCostPerBird;
     projectedCostWeek16 = currentUnitCost + remainingEstimatedCostPerBird;
   }

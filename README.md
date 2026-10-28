@@ -1,124 +1,52 @@
-<div align="center">
-  <img src="public/logo-mark.png" width="120" height="120" alt="Logo El Sembrador" />
+# El Sembrador
 
-  # SembraBB
-  ### El Sembrador — Control de Recría Avícola
+Aplicación en español para organizar la granja y las ventas de ración, preparada para celular y escritorio. Publicada en https://sembrador.okto.ie el 27/10/2026.
 
-  Gestión y control de costos para recría de pollitas BB, de Día 0 a Semana 16.
+- Lotes por galpón, llegadas previstas, salidas parciales y completas e historial.
+- Cantidad de pollitas, edad al llegar y actual, bajas, alimentación en kilos y costos por lote.
+- Compras semanales de maíz, soja y ración; kilos o bolsas con peso explícito; consumos ligados al precio de cada compra, ventas y elaboración.
+- Calendario mensual de llegadas, retiros y trabajos, filtrado por galpón; fechas previstas, fechas reales y costos.
+- Cuentas por mes, sin duplicar la compra del alimento al asignarlo a un lote.
+- PIN de seis dígitos verificado en el servidor, respaldos e importación de versiones anteriores.
+- Biblioteca de logo, etiquetas, flyers y aviso de servicios; carga privada de imágenes/PDF, descarga y compartir desde el celular.
 
-  <p>
-    <img src="https://img.shields.io/badge/React-19-166534?style=for-the-badge&logo=react&logoColor=white" alt="React 19" />
-    <img src="https://img.shields.io/badge/TypeScript-5.8-166534?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/Vite-6-EA580C?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-    <img src="https://img.shields.io/badge/TailwindCSS-4-EA580C?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
-    <img src="https://img.shields.io/badge/PWA-Instalable-166534?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA" />
-  </p>
-</div>
+## Persistencia
 
----
+PHP guarda la granja en SQLite dentro de SEMBRADOR_DATA_DIR, una carpeta privada fuera del directorio público y de las carpetas de versiones. El frontend conserva copias y cambios pendientes por pestaña. Solo muestra «Guardado» cuando el servidor confirma. Las revisiones impiden sobrescribir cambios de otro dispositivo y las últimas 100 revisiones se conservan como respaldo interno.
 
-## Sobre el proyecto
+Hace falta conexión para verificar el acceso al iniciar. Si se corta durante una sesión, se conservan los cambios pendientes en ese navegador y se reintenta al reconectar. No borrar el almacenamiento del navegador mientras haya cambios pendientes. Los respaldos diarios del VPS se ejecutan a las 03:17 UTC. El 27/10/2026, con autorización explícita del usuario, se descargó y verificó una copia en su carpeta privada local. No hay descarga local ni eliminación de copias automáticas.
 
-**SembraBB** es la aplicación interna de **El Sembrador** para llevar el control diario de la recría de pollitas BB: costos por lote, mortalidad, alimentación, calefacción, vacunación y proyección de costo por ave hasta la semana 16. Funciona 100% en el navegador (sin backend), guarda los datos en el dispositivo y se puede instalar como app en el celular.
+## Desarrollo
 
-## Características
+Requisitos: Node.js y PHP 8.1+ con PDO SQLite.
 
-- **Gestión de lotes** — alta de lotes con raza, cantidad inicial y costo por pollita, con seguimiento de edad en días/semanas.
-- **Registro de operaciones** — alimento, mortalidad, vacunas, calefacción y otros gastos, cada uno con costo y cantidad.
-- **Costos calculados en tiempo real** — costo unitario actual por ave viva, gasto total invertido y proyección de costo a semana 16.
-- **Alerta de mortalidad crítica** — aviso automático cuando la mortalidad acumulada supera el 2%.
-- **Calendario sanitario** — esquema oficial de vacunación (semana 1 a 16) cruzado con la edad real de cada lote.
-- **Vista consolidada** — totales de toda la granja: aves vivas, inversión acumulada y mortalidad promedio.
-- **Modo Noche** y **Modo Accesible** (texto grande y alto contraste, pensado para uso en galpón bajo sol).
-- **Respaldo y restauración** — exportación/importación de todos los datos en un archivo JSON.
-- **Acceso con PIN** de 4 dígitos.
-- **Instalable (PWA)** — se agrega a la pantalla de inicio en Android y abre en pantalla completa, con soporte offline básico.
+- `npm install`: instalar dependencias.
+- `npm run dev`: Vite, puerto 3000; API hacia SEMBRADOR_API_TARGET (por defecto XAMPP: http://localhost/sembrador).
+- `npm run lint`: comprobar TypeScript.
+- `npm test`: pruebas de cálculos y API con datos temporales.
+- `npm run release`: compilar frontend + PHP en dist/, excluyendo datos y configuración privada.
+- `node scripts/preview.mjs`: vista previa ficticia de dist/ en http://127.0.0.1:8307. PIN de prueba: 742913. No reutilizarlo en producción.
 
-## Capturas
+Con XAMPP, configurar SEMBRADOR_DATA_DIR (por ejemplo C:/xampp/sembrador-data) y un PIN inicial privado en el entorno de PHP o api/config.local.php. Ese archivo nunca se versiona. VITE_BASE_PATH permite compilar para una subcarpeta; / corresponde a un subdominio.
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img src="docs/screenshots/login.jpg" alt="Pantalla de acceso con PIN" width="100%" /><br />
-      <sub>Acceso con PIN</sub>
-    </td>
-    <td align="center" width="50%">
-      <img src="docs/screenshots/dashboard-light.jpg" alt="Panel principal, modo día" width="100%" /><br />
-      <sub>Mis Lotes — Modo Día</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <img src="docs/screenshots/dashboard-dark.jpg" alt="Panel principal, modo noche" width="100%" /><br />
-      <sub>Mis Lotes — Modo Noche</sub>
-    </td>
-    <td align="center" width="50%">
-      <img src="docs/screenshots/health-schedule.jpg" alt="Calendario sanitario y vacunación" width="100%" /><br />
-      <sub>Calendario Sanitario</sub>
-    </td>
-  </tr>
-</table>
+## Publicación y recuperación
 
-## Stack técnico
+Seguir [la guía de despliegue](deploy/README.md). El destino confirmado es Okto: contenedor `sembrador-app`, subdominio https://sembrador.okto.ie y datos externos en `/home/ubuntu/sembrador-private/data`. Se verificaron HTTPS, acceso y persistencia al recrear el contenedor.
 
-| | |
-|---|---|
-| **Framework** | React 19 + TypeScript |
-| **Build** | Vite 6 |
-| **Estilos** | Tailwind CSS 4 (CSS-first, sin `tailwind.config.js`) |
-| **Gráficos** | Recharts |
-| **Íconos** | lucide-react |
-| **Animación** | motion |
-| **Persistencia** | `localStorage` del navegador (sin backend) |
+Los datos que solo estaban en otro navegador/dominio requieren exportarse desde allí o localizar un respaldo. Cambiar de subdominio no permite leer automáticamente ese almacenamiento. Si existe JSON del backend anterior, la API lo migra conservando los archivos originales.
 
-## Desarrollo local
+## Código principal
 
-**Requisitos:** Node.js
+- src/FarmApp.tsx y src/components/FarmWorkspace.tsx: pantallas y formularios actuales.
+- src/utils/useFarm.ts: carga, guardado, pendientes y conflictos.
+- src/utils/farm.ts: validación, stock, movimientos y costos.
+- api/lib/farm_store.php: SQLite, migración, validación y revisiones.
+- api/backup.php: respaldo consistente por línea de comandos; SQLite incluye imágenes y JSON incluye solo registros.
+- api/media.php: biblioteca autenticada en la misma base SQLite, independiente de las revisiones de registros.
+- tests/: cálculos, autenticación y persistencia entre versiones.
 
-```bash
-# Instalar dependencias
-npm install
+Las vistas antiguas se conservan; la entrada actual es FarmApp desde src/main.tsx. No se insertan datos de ejemplo en producción.
 
-# Servidor de desarrollo (http://localhost:3000)
-npm run dev
+## Flyers pendientes
 
-# Build de producción
-npm run build
-
-# Previsualizar el build
-npm run preview
-
-# Chequeo de tipos (no hay suite de tests configurada)
-npm run lint
-```
-
-## Estructura del proyecto
-
-```
-src/
-├── components/     # Vistas y modales de la UI
-├── utils/          # Cálculos de costos/mortalidad y datos de ejemplo
-├── types.ts        # Modelo de datos (Batch, OperationRecord, ...)
-└── App.tsx         # Estado global, persistencia y enrutado de vistas
-public/
-├── icons/          # Íconos de la PWA generados a partir del logo
-├── manifest.webmanifest
-└── sw.js           # Service worker (instalabilidad + caché offline)
-```
-
-Todo el estado (lotes, registros, PIN, tema, accesibilidad) vive en `App.tsx` y se persiste en `localStorage`; las métricas de cada lote (mortalidad, costo por ave, proyección a semana 16) se recalculan a partir de esos datos en `src/utils/calculations.ts`.
-
-## Despliegue
-
-El proyecto está preparado para desplegarse en un subdirectorio (por ejemplo `https://tudominio.com/sembrador/`):
-
-- `vite.config.ts` fija `base: '/sembrador/'` solo durante `npm run build`.
-- `public/.htaccess` (se copia a `dist/`) configura compresión, cache de assets con hash, MIME del manifest y que `index.html`/`sw.js` nunca queden cacheados.
-
-Para publicar, subir el contenido de `dist/` (generado con `npm run build`) a la carpeta correspondiente del servidor.
-
----
-
-<div align="center">
-  <sub>SembraBB · El Sembrador — Recría Avícola</sub>
-</div>
+Cuatro piezas: ración ovina peletizada, ovina no peletizada, ponedoras y recría. El logo original del repositorio ya está disponible en Compartir. Faltan la etiqueta de referencia y el aviso usado en la revista avícola para preparar las piezas y su contenido. No inventar precios, composición nutricional ni contacto.

@@ -154,26 +154,26 @@ export const BatchDetailView: React.FC<BatchDetailViewProps> = ({
 
         {/* MOTOR DE CÁLCULO: Tarjeta de Costo Unitario Actual */}
         <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-5 rounded-2xl shadow-md border border-orange-400">
-            <p className="text-xs font-bold text-orange-100 uppercase tracking-wider">
+          <div className="bg-slate-50 p-5 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-orange-400">
+            <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
               Costo Unitario Actual Por Viva
             </p>
-            <p className="text-3xl sm:text-4xl font-black mt-1">
+            <p className="text-3xl sm:text-4xl font-black mt-1 text-orange-600">
               {formatCurrency(summary.currentUnitCost)}
             </p>
-            <p className="text-xs text-orange-100 mt-2 font-medium">
+            <p className="text-xs text-slate-500 mt-2 font-medium">
               Fórmula: Total Gastos ({formatCurrency(summary.totalExpenses)}) / Aves Vivas ({summary.currentLiveCount})
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-emerald-700 to-emerald-800 text-white p-5 rounded-2xl shadow-md border border-emerald-600">
-            <p className="text-xs font-bold text-emerald-100 uppercase tracking-wider">
+          <div className="bg-slate-50 p-5 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-emerald-500">
+            <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
               Proyección a Semana 16
             </p>
-            <p className="text-3xl sm:text-4xl font-black mt-1">
+            <p className="text-3xl sm:text-4xl font-black mt-1 text-emerald-700">
               {formatCurrency(summary.projectedCostWeek16)}
             </p>
-            <p className="text-xs text-emerald-100 mt-2 font-medium">
+            <p className="text-xs text-slate-500 mt-2 font-medium">
               Estimado final por pollita al término de recría (Día 112)
             </p>
           </div>

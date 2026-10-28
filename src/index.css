@@ -1,63 +1,5 @@
 @import "tailwindcss";
 
-/* Modo Accesible: Texto aumentado, alto contraste, mayor grosor */
-.high-accessibility {
-  font-size: 1.125rem; /* ~18px base */
-}
-
-.high-accessibility body {
-  font-size: 1.125rem;
-  line-height: 1.6;
-}
-
-.high-accessibility h1 {
-  font-size: 2rem !important;
-  font-weight: 900 !important;
-}
-
-.high-accessibility h2 {
-  font-size: 1.75rem !important;
-  font-weight: 900 !important;
-}
-
-.high-accessibility h3 {
-  font-size: 1.5rem !important;
-  font-weight: 900 !important;
-}
-
-.high-accessibility h4 {
-  font-size: 1.35rem !important;
-  font-weight: 900 !important;
-}
-
-.high-accessibility button,
-.high-accessibility a,
-.high-accessibility input,
-.high-accessibility select,
-.high-accessibility textarea {
-  font-size: 1.15rem !important;
-  font-weight: 800 !important;
-  min-height: 48px !important;
-}
-
-.high-accessibility .text-slate-500,
-.high-accessibility .text-slate-600 {
-  color: #0f172a !important; /* Maximiza el contraste contra fondos claros */
-  font-weight: 700 !important;
-}
-
-.high-accessibility .text-green-200,
-.high-accessibility .text-green-300 {
-  color: #ffffff !important; /* Maximiza legibilidad en banners oscuros */
-  font-weight: 700 !important;
-}
-
-.high-accessibility .border-slate-200,
-.high-accessibility .border-slate-300 {
-  border-width: 3px !important;
-  border-color: #334155 !important;
-}
-
 /* Modo Noche (Tema Oscuro Nocturno) para El Sembrador */
 .dark-theme {
   background-color: #090d16 !important;
@@ -142,5 +84,75 @@
   background-color: #7f1d1d !important;
   color: #fee2e2 !important;
 }
+
+/* Variantes -100/-200 usadas en chips y badges (más suaves que -50/-500) */
+.dark-theme .bg-green-100 {
+  background-color: #14532d !important;
+  color: #dcfce7 !important;
+}
+
+.dark-theme .bg-green-200 {
+  background-color: #166534 !important;
+  color: #dcfce7 !important;
+}
+
+.dark-theme .bg-orange-100 {
+  background-color: #9a3412 !important;
+  color: #ffedd5 !important;
+}
+
+.dark-theme .bg-orange-200 {
+  background-color: #c2410c !important;
+  color: #ffedd5 !important;
+}
+
+.dark-theme .bg-amber-100 {
+  background-color: #92400e !important;
+  color: #fef3c7 !important;
+}
+
+.dark-theme .bg-blue-100 {
+  background-color: #1e3a8a !important;
+  color: #dbeafe !important;
+}
+
+.dark-theme .bg-blue-200 {
+  background-color: #1d4ed8 !important;
+  color: #dbeafe !important;
+}
+
+.dark-theme .bg-purple-200 {
+  background-color: #6b21a8 !important;
+  color: #f3e8ff !important;
+}
+
+/* Texto en colores saturados (pensado para fondos claros): en modo noche se
+   aclaran para no quedar oscuro-sobre-oscuro y perder legibilidad. */
+.dark-theme .text-green-700 { color: #4ade80 !important; }
+.dark-theme .text-green-800 { color: #86efac !important; }
+.dark-theme .text-green-900 { color: #bbf7d0 !important; }
+.dark-theme .text-green-950 { color: #dcfce7 !important; }
+
+.dark-theme .text-emerald-700 { color: #34d399 !important; }
+.dark-theme .text-emerald-800 { color: #6ee7b7 !important; }
+.dark-theme .text-emerald-900 { color: #a7f3d0 !important; }
+
+.dark-theme .text-red-700 { color: #f87171 !important; }
+.dark-theme .text-red-800 { color: #fca5a5 !important; }
+.dark-theme .text-red-900 { color: #fecaca !important; }
+.dark-theme .text-red-950 { color: #fee2e2 !important; }
+
+.dark-theme .text-blue-700 { color: #60a5fa !important; }
+.dark-theme .text-blue-800 { color: #93c5fd !important; }
+.dark-theme .text-blue-900 { color: #bfdbfe !important; }
+.dark-theme .text-blue-950 { color: #dbeafe !important; }
+
+.dark-theme .text-amber-700 { color: #fbbf24 !important; }
+.dark-theme .text-amber-900 { color: #fde68a !important; }
+.dark-theme .text-amber-950 { color: #fef3c7 !important; }
+
+.dark-theme .text-orange-800 { color: #fdba74 !important; }
+.dark-theme .text-orange-900 { color: #fed7aa !important; }
+.dark-theme .text-orange-950 { color: #ffedd5 !important; }
 
 

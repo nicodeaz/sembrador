@@ -1,0 +1,4 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+17 3 * * * root /bin/sh /home/ubuntu/sites/sembrador/current/deploy/backup-server.sh
+

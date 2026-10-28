@@ -6,3 +6,13 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Datos reales de la API (PIN hasheado, lotes, registros) - nunca a git.
+api/data/*
+!api/data/.htaccess
+api/config.local.php
+release/
+.test-artifacts/
+.private/
+*.sqlite*
+*.tar.gz

@@ -1,0 +1,9 @@
+# Los archivos acá adentro (pin.json, batches.json, records.json, etc.) solo
+# deben leerse a través de los endpoints PHP autenticados, nunca directo por URL.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

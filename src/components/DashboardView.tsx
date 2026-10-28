@@ -154,23 +154,23 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   return (
     <div className="space-y-6 pb-12">
       {/* Banner Resumen de la Granja */}
-      <div className="bg-gradient-to-r from-green-800 to-green-900 rounded-3xl p-5 sm:p-7 text-white shadow-xl border border-green-700">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-green-700/60 pb-5">
+      <div className="bg-white rounded-3xl p-5 sm:p-7 shadow-md border-2 border-slate-200 border-t-4 border-t-green-700">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-5">
           <div>
-            <span className="bg-orange-500/20 text-orange-300 font-bold px-3 py-1 rounded-full text-xs sm:text-sm uppercase tracking-wider border border-orange-500/30">
+            <span className="bg-green-50 text-green-800 font-bold px-3 py-1 rounded-full text-xs sm:text-sm uppercase tracking-wider border border-green-200">
               Resumen General • El Sembrador
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black mt-2 text-white">
+            <h2 className="text-2xl sm:text-3xl font-black mt-2 text-slate-900">
               Mis Lotes en Recría
             </h2>
-            <p className="text-green-200 text-sm sm:text-base mt-1">
+            <p className="text-slate-500 text-sm sm:text-base mt-1">
               Control diario de gastos, mortalidad y costo por pollita viva
             </p>
           </div>
 
           <button
             onClick={onNewBatchClick}
-            className="bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-black px-5 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-lg transition-transform text-base sm:text-lg border border-orange-400/40"
+            className="bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-black px-5 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md transition-transform text-base sm:text-lg"
           >
             <PlusCircle className="w-6 h-6" />
             <span>Agregar Nuevo Lote</span>
@@ -179,62 +179,62 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
         {/* 4 Métricas Clave de la Granja */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-5">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-            <p className="text-xs sm:text-sm font-bold text-green-200 uppercase tracking-wide">
+          <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
+            <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide">
               Total Pollitas Vivas
             </p>
             <div className="flex items-center gap-2 mt-1">
-              <Bird className="w-7 h-7 text-orange-400" />
-              <p className="text-2xl sm:text-3xl font-black text-white">
+              <Bird className="w-7 h-7 text-orange-500" />
+              <p className="text-2xl sm:text-3xl font-black text-slate-900">
                 {consolidated.totalLivePullets.toLocaleString()}
               </p>
             </div>
-            <p className="text-xs text-green-300 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               En {consolidated.totalActiveBatches} Lotes Activos
             </p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-            <p className="text-xs sm:text-sm font-bold text-green-200 uppercase tracking-wide">
+          <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
+            <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide">
               Costo Promedio Actual
             </p>
             <div className="flex items-center gap-2 mt-1">
-              <DollarSign className="w-7 h-7 text-orange-400" />
-              <p className="text-2xl sm:text-3xl font-black text-orange-300">
+              <DollarSign className="w-7 h-7 text-orange-500" />
+              <p className="text-2xl sm:text-3xl font-black text-orange-600">
                 {formatCurrency(consolidated.avgCostPerPullet)}
               </p>
             </div>
-            <p className="text-xs text-green-300 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Por pollita viva acumulado
             </p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-            <p className="text-xs sm:text-sm font-bold text-green-200 uppercase tracking-wide">
+          <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
+            <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide">
               Mortalidad General
             </p>
             <div className="flex items-center gap-2 mt-1">
-              <AlertTriangle className={`w-7 h-7 ${consolidated.avgMortalityRate >= 2.0 ? 'text-red-400 animate-pulse' : 'text-yellow-400'}`} />
-              <p className="text-2xl sm:text-3xl font-black text-white">
+              <AlertTriangle className={`w-7 h-7 ${consolidated.avgMortalityRate >= 2.0 ? 'text-red-500 animate-pulse' : 'text-amber-500'}`} />
+              <p className="text-2xl sm:text-3xl font-black text-slate-900">
                 {consolidated.avgMortalityRate}%
               </p>
             </div>
-            <p className="text-xs text-green-300 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               {consolidated.totalMortality} bajas acumuladas
             </p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-            <p className="text-xs sm:text-sm font-bold text-green-200 uppercase tracking-wide">
+          <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
+            <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide">
               Gasto Total Invertido
             </p>
             <div className="flex items-center gap-2 mt-1">
-              <TrendingUp className="w-7 h-7 text-green-300" />
-              <p className="text-2xl sm:text-3xl font-black text-white">
+              <TrendingUp className="w-7 h-7 text-green-700" />
+              <p className="text-2xl sm:text-3xl font-black text-slate-900">
                 {formatCurrency(consolidated.totalInvestment)}
               </p>
             </div>
-            <p className="text-xs text-green-300 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Inversión acumulada
             </p>
           </div>
@@ -271,16 +271,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
       {/* Banner de Recordatorios de Hitos de Edad (Semanas 4, 8, 12, 16) */}
       {activeMilestones.length > 0 && (
-        <div className="bg-gradient-to-r from-orange-500 to-amber-600 text-white p-5 rounded-3xl shadow-xl border-2 border-orange-400 space-y-3">
+        <div className="bg-amber-50 text-amber-950 p-5 rounded-3xl shadow-sm border-2 border-amber-300 space-y-3">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-white/20 rounded-2xl">
-              <Bell className="w-7 h-7 text-white animate-pulse" />
+            <div className="p-2.5 bg-amber-100 rounded-2xl">
+              <Bell className="w-7 h-7 text-amber-600 animate-pulse" />
             </div>
             <div>
-              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide">
-                🔔 RECORDATORIOS DE HITOS DE EDAD ACTIVOS
+              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide text-amber-900">
+                🔔 Recordatorios de Hitos de Edad Activos
               </h3>
-              <p className="text-orange-100 text-xs sm:text-sm font-semibold">
+              <p className="text-amber-700 text-xs sm:text-sm font-semibold">
                 Lotes que han alcanzado semanas claves en el proceso de recría
               </p>
             </div>
@@ -288,15 +288,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
             {activeMilestones.map((m, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/20">
+              <div key={idx} className="bg-white p-3.5 rounded-2xl border border-amber-200">
                 <div className="flex items-center justify-between">
-                  <span className="bg-white text-orange-900 font-extrabold text-xs px-2.5 py-1 rounded-lg">
+                  <span className="bg-amber-100 text-amber-900 font-extrabold text-xs px-2.5 py-1 rounded-lg">
                     {m.batchName} • Semana {m.week}
                   </span>
-                  <span className="text-xs font-bold text-orange-100 uppercase">Hito de Crianza</span>
+                  <span className="text-xs font-bold text-amber-600 uppercase">Hito de Crianza</span>
                 </div>
-                <p className="font-extrabold text-sm text-white mt-1.5">{m.title}</p>
-                <p className="text-xs text-orange-100 mt-1 font-medium">{m.description}</p>
+                <p className="font-extrabold text-sm text-slate-900 mt-1.5">{m.title}</p>
+                <p className="text-xs text-slate-500 mt-1 font-medium">{m.description}</p>
               </div>
             ))}
           </div>
@@ -477,27 +477,27 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     {/* Grid de Métricas Clave del Lote */}
                     <div className="grid grid-cols-2 gap-3 mt-4">
                       {/* Tarjeta Costo Actual Por Pollita Viva */}
-                      <div className="bg-orange-50/80 rounded-2xl p-3.5 border-2 border-orange-200 flex flex-col justify-between">
-                        <p className="text-xs font-bold text-orange-900 uppercase tracking-wide">
+                      <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200 border-l-4 border-l-orange-400 flex flex-col justify-between">
+                        <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">
                           Costo Actual por Viva
                         </p>
                         <p className="text-2xl font-black text-orange-600 mt-1">
                           {formatCurrency(s.currentUnitCost)}
                         </p>
-                        <p className="text-[11px] text-orange-800 font-semibold mt-0.5">
+                        <p className="text-[11px] text-slate-500 font-semibold mt-0.5">
                           Inversión total: {formatCurrency(s.totalExpenses)}
                         </p>
                       </div>
 
                       {/* Proyección Sem 16 */}
-                      <div className="bg-emerald-50/80 rounded-2xl p-3.5 border-2 border-emerald-200 flex flex-col justify-between">
-                        <p className="text-xs font-bold text-emerald-900 uppercase tracking-wide">
+                      <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200 border-l-4 border-l-emerald-500 flex flex-col justify-between">
+                        <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">
                           Proyección Sem 16
                         </p>
                         <p className="text-2xl font-black text-emerald-700 mt-1">
                           {formatCurrency(s.projectedCostWeek16)}
                         </p>
-                        <p className="text-[11px] text-emerald-800 font-semibold mt-0.5">
+                        <p className="text-[11px] text-slate-500 font-semibold mt-0.5">
                           Estimado final por ave
                         </p>
                       </div>

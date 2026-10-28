@@ -2,7 +2,8 @@
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /sembrador/
+  # Relative rules work at a subdomain root or inside a subdirectory.
+  RewriteRule ^api/ - [L]
 
   # No reescribir archivos o carpetas que sí existen
   RewriteCond %{REQUEST_FILENAME} -f [OR]

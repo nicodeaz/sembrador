@@ -19,7 +19,10 @@ const getPastDate = (daysAgo: number): string => {
   return d.toISOString().split('T')[0];
 };
 
-export const INITIAL_BATCHES: Batch[] = [
+// Datos de muestra para demostración / pruebas (botón "Cargar Datos de Ejemplo"
+// en Ajustes). La app en producción arranca vacía: ver `EMPTY_BATCHES` /
+// `EMPTY_RECORDS` y el estado inicial en App.tsx.
+export const SAMPLE_BATCHES: Batch[] = [
   {
     id: 'lote-1',
     name: 'Lote A - Ene 15',
@@ -44,7 +47,7 @@ export const INITIAL_BATCHES: Batch[] = [
   }
 ];
 
-export const INITIAL_RECORDS: OperationRecord[] = [
+export const SAMPLE_RECORDS: OperationRecord[] = [
   // Lote A
   {
     id: 'rec-1',

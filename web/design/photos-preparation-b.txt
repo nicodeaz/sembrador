@@ -1,0 +1,38 @@
+El Sembrador — preparación de fotografías (lote B)
+Fecha: 2026-10-28
+Modo: herramienta integrada ImageGen (edición), sin CLI.
+Fuentes originales: C:/Users/dev/Downloads/drive-download-20261028T200551Z-1-001/
+
+Los originales permanecen intactos. Las versiones para web son ediciones de ImageGen para retirar la interfaz del teléfono; no son recortes exactos de píxeles. En Julio y Tibu se pidió encuadre de retrato que excluyera la matrícula. Identidades, encuadre y contenido se compararon visualmente. Conversión final a WebP y reducción a ancho máximo 1100 con Pillow, sin otras modificaciones.
+
+SOURCE: IMG_9015.PNG
+FINAL: web/assets/photos/julio-tibu.webp
+GENERATED: Generated images are saved to C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb as C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb\exec-da63efe9-9031-4cdc-88e9-d712dd0ecede.png by default.
+PROMPT:
+Use case: identity-preserve. Edit target: supplied iPhone Photos screenshot IMG_9015, specifically its central photograph of Julio smiling with his collie dog wearing glasses in the back of a white pickup. Extract ONLY the actual photograph and crop it into a natural professional website portrait of the SAME man and SAME dog together, upper bodies and both complete faces retained. Remove all phone UI, dates, bars, black margins and thumbnail filmstrip by cropping. Crop the lower edge above the pickup license plate so no license plate is visible. Preserve the man's exact face, age, smile, hair, skin texture, white shirt, hands and pose; preserve the dog's exact face, fur and glasses; preserve original light, colors and actual farm background. Do not beautify, redraw identities, replace background, add or remove objects within the retained crop, or invent details. The result should look like the original documentary photograph, only cleanly cropped for a website. Portrait 4:5 composition if it fits both subjects. No text, border or watermark.
+
+SOURCE: IMG_9013.PNG
+FINAL: web/assets/photos/tibu.webp
+GENERATED: Generated images are saved to C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb as C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb\exec-54eb26af-7618-41eb-b8bf-962072232c4b.png by default.
+PROMPT:
+Use case: precise-object-edit. Edit target: supplied iPhone Photos screenshot IMG_9013. Extract ONLY the central original photograph of the collie lying with its head on grass, by removing the entire black phone UI area above and below. Output the landscape photograph edge-to-edge at its original 4:3 ratio. Preserve the exact dog identity, face, eyes, fur markings, pose, existing framing, lawn, original colors, sunlight and photographic softness. No redesign, retouch, stylization, relighting, new content, invented detail or change of composition within the actual photo. Remove all status bar, location/date, buttons, thumbnails, phone UI and black margins. The result must be the same photograph cleanly cropped, no added text or border.
+
+SOURCE: IMG_9011.PNG
+FINAL: web/assets/photos/peloton.webp
+GENERATED: Generated images are saved to C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb as C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb\exec-57af9d3a-acb1-4d96-a01a-be84e5ba0a5d.png by default.
+PROMPT:
+Use case: identity-preserve. Edit target: supplied iPhone Photos screenshot IMG_9011. Extract ONLY the central original portrait photograph of the German Shepherd dog resting on grass and gravel. Remove every phone interface element, black margins, location/date header, status bar, thumbnails and buttons by cropping to the actual photograph. Preserve EXACT animal identity, face, eyes including their existing appearance, fur markings, body proportions, lying pose, paws, grass/gravel, light, colors, original photographic softness and original framing. No animal retouch or beautification, no relighting, no change of body or scene, no new details, no invented border. Output the same original photo edge to edge, portrait 3:4.
+
+SOURCE: IMG_9012.PNG
+FINAL: web/assets/photos/pollitas-recria.webp
+GENERATED: Generated images are saved to C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb as C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb\exec-888d309a-5531-4091-9b34-cc3c88fc0b67.png by default.
+PROMPT:
+Use case: precise-object-edit. Edit target: supplied iPhone Photos screenshot IMG_9012. Extract ONLY the central original portrait photograph of the large group of little white/yellow chicks inside the barn. Remove all phone UI, black margins, status bar, location/date, thumbnails and buttons by cropping. Preserve exact chick count/layout, foreground animals, faces, colored markings on feathers, bedding, barn back wall and feeders, light, color and photographic softness. No restyle, no new content, no invented details, no relocation/removal of animals, no cleanup of farm. Output the same photograph edge-to-edge in its portrait3:4 ratio. Do not add any text, borders, watermarks or phone UI.
+
+SOURCE: IMG_9014.PNG
+FINAL: web/assets/photos/pollitos.webp
+GENERATED: Generated images are saved to C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb as C:\Users\dev\.codex\generated_images\01a18422-363c-7dd2-80b9-36eccd5056fb\exec-95bd5e2d-817d-460f-a535-8efe4b6d79d7.png by default.
+PROMPT:
+Use case: precise-object-edit. Edit target: supplied iPhone Photos screenshot IMG_9014. Extract ONLY its central original photograph of fluffy yellow chicks on wood-shaving bedding, with one large chick in the lower right foreground. Remove ALL black margins and phone UI, date/location header, status bar, thumbnail filmstrip and buttons by cropping. Preserve exactly the chick arrangement, faces, eyes, beaks, feathers, feet, bedding, barn background, original light and colors and natural photographic softness. Do not retouch animals, resharpen details into new content, replace or move subjects, add objects, or change composition within the photograph. Output the same original photo edge-to-edge in its portrait3:4 ratio, no text, borders or watermark.
+
+

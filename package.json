@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
+    "release": "npm run lint && vite build && node scripts/package.mjs",
+    "test": "node --import tsx --test tests/domain.test.ts tests/email-access-state.test.ts && node --test tests/api.test.mjs tests/email-access.test.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"

@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(({command}) => {
+export default defineConfig(() => {
   return {
-    // En producción la app se sirve desde https://okto.ie/sembrador/
-    base: command === 'build' ? '/sembrador/' : '/',
+    // Default: subdomain root. Override for a subdirectory release.
+    base: process.env.VITE_BASE_PATH || '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -19,6 +19,16 @@ export default defineConfig(({command}) => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      // El backend PHP (api/*.php) lo sirve el Apache de XAMPP en
+      // http://localhost/sembrador/ (esta misma carpeta es su docroot).
+      // El dev server de Vite reenvía /api hacia ahí para poder probar
+      // login/datos en caliente sin tener que buildear.
+      proxy: {
+        '/api': {
+          target: process.env.SEMBRADOR_API_TARGET || 'http://localhost/sembrador',
+          changeOrigin: true,
+        },
+      },
     },
   };
 });

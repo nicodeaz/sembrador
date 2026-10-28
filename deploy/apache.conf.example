@@ -1,0 +1,20 @@
+# Replace the example domain and release path before enabling this vhost.
+# Run HTTPS setup with your host's certificate tooling before public delivery.
+<VirtualHost *:80>
+    ServerName sembrador.example.com
+    DocumentRoot /srv/el-sembrador/current
+
+    SetEnv SEMBRADOR_DATA_DIR /var/lib/el-sembrador
+    # First installation only: configure a private 6-digit PIN in a root-owned
+    # server configuration file. Remove SEMBRADOR_INITIAL_PIN after initialization.
+    # SetEnv SEMBRADOR_INITIAL_PIN <private-six-digit-pin>
+
+    <Directory /srv/el-sembrador/current>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/sembrador-error.log
+    CustomLog ${APACHE_LOG_DIR}/sembrador-access.log combined
+</VirtualHost>

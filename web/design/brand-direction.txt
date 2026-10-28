@@ -1,0 +1,74 @@
+EL SEMBRADOR — DIRECCIÓN DE MARCA
+Fecha: 28/10/2026
+Estado: PUBLICADA Y VERIFICADA en https://elsembrador.okto.ie — versión 20261028-publica-5, 28/10/2026 a las 21:02 UTC.
+
+IDENTIDAD
+Conservar intacto el logo original: formas, proporciones, colores y nombre El Sembrador. Los archivos originales siguen siendo la referencia de identidad; no sustituir el logo principal por una reconstrucción generada.
+La presencia visual se construye a partir de su verde y naranja, con títulos fuertes, fondos claros y escenas de la granja.
+
+PALETA
+Verde principal: #00643b.
+Naranja: #ff8708.
+Forest / texto oscuro: #003e29.
+Crema: #fffaf0.
+Mint / superficies secundarias: #edf0e3.
+Usar el naranja para llamadas a WhatsApp y detalles; comprobar contraste en los tamaños reales de texto.
+
+TIPOGRAFÍA Y COMPONENTES
+Manrope variable local, servida desde assets/fonts/manrope-variable.woff2.
+Títulos sans serif con peso 800, de carácter sólido y cercano al logo. No se afirma que Manrope sea la tipografía exacta del logotipo.
+Botones claros y consistentes, con WhatsApp como destino principal. Mantener estados de foco visibles, tamaños cómodos en móvil y lectura sin depender de la animación.
+
+COMPOSICIÓN
+Cada sección funciona como una escena propia. Los personajes se integran en el espacio; no presentarlos como una colección de tarjetas o una galería independiente.
+Julio: retrato frontal con remera de El Sembrador, integrado junto a su trayectoria.
+Tibu: recorte fotográfico relajado en la sección de WhatsApp/contacto.
+Chanchito con lentes: personaje de la escena de la granja, sobre el entorno de El Tata.
+Recría: fotografías de los pollitos distribuidas en la escena del nacimiento.
+Granja: cartel y rueda de El Sembrador, campo y entorno de El Tata. Pelotón aparece en un pequeño recuerdo dentro de la escena, sin presentarlo como un animal actualmente vivo.
+Las fotografías están incorporadas donde aportan contexto. La versión publicada no contiene una galería separada.
+
+ANIMACIÓN
+Un único recorrido al avanzar por la página: huevo → nacimiento → pollito → pollita → gallina. Termina en la granja y sale con el desplazamiento natural.
+No repetir el ciclo, añadir otro huevo final ni mostrar un control de reinicio. Conservar scroll reveal y adaptación a movimiento reducido.
+
+PERSONAJES: ARCHIVOS FINALES Y PROMPTS UTILIZADOS
+Todas las siguientes piezas se realizaron con la herramienta integrada ImageGen, en modo de edición y fondo transparente. Se conservaron las fotografías originales. Son adaptaciones de imágenes reales y poses recompuestas; no deben describirse como fotografías documentales intactas.
+
+1. Julio
+Archivo: web/assets/characters/julio-frente.webp.
+Entrega verificada: 1122x1402, RGBA, 159064 bytes.
+Referencia de identidad: IMG_9015.PNG; referencia de marca: web/assets/logo-original.png.
+Prompt exacto y procedencia: web/design/characters-prompts.txt.
+Contenido del prompt utilizado: retrato de cintura hacia arriba del mismo Julio, de frente, con sonrisa y edad preservadas, remera blanca con el logo de El Sembrador en el pecho, sin perro, camioneta, teléfono ni fondo.
+El logo recreado sobre la tela no garantiza píxeles idénticos al original. Mantener el archivo original intacto como marca principal en la web.
+
+2. Tibu
+Archivo: web/assets/characters/tibu.webp.
+Entrega verificada: 1100x733, RGBA, 191736 bytes.
+Referencias: IMG_9013.PNG (identidad principal) e IMG_9015.PNG (cuerpo y pelaje).
+Prompt exacto y procedencia: web/design/tibu-character.txt.
+Contenido del prompt utilizado: el mismo collie sable y blanco, acostado con la cabeza ligeramente elevada, cuerpo, patas y cola completos, rasgos y marcas de pelaje conservados, sin gafas, objetos ni entorno, fondo con transparencia real.
+
+3. Chanchito
+Archivo: web/assets/characters/chanchito.webp.
+Entrega verificada: 1000x1067, RGBA, 198080 bytes.
+Referencias: IMG_9004.PNG e IMG_9007.PNG.
+Prompt exacto y procedencia: web/design/pig-character.txt.
+Contenido del prompt utilizado: el mismo chanchito rosado con los lentes negros de la referencia, sentado naturalmente, cuerpo y pezuñas visibles, proporciones y cerdas claras conservadas, sin manos, personas, suelo ni fondo, transparencia real.
+
+FOTOGRAFÍAS Y TRAZABILIDAD
+Las imágenes entregadas por el usuario eran capturas de Fotos del teléfono. Las versiones preparadas para web están en web/assets/photos/ y retiran la interfaz. Se usó ImageGen para las ediciones; no son recortes exactos de píxeles.
+La foto de El Tata se editó para retirar el chanchito y reconstruir el césped. La foto de la rueda se editó para retirar a la persona y reconstruir el fondo.
+Prompts y fuentes: web/design/photos-edits.txt, web/design/photos-preparation-a.txt y web/design/photos-preparation-b.txt.
+El borrador de álbum anterior permanece en web/design/photo-album-draft/ como historial y no define la dirección actual.
+
+TARJETA SOCIAL
+Archivo local: web/assets/social-card.jpg, 1200x630.
+Prompt exacto y procedencia: web/design/social-brand-prompt.txt.
+La tarjeta está publicada en V5. La comprobación HTTPS confirmó que el hash público coincide con el archivo final; el prompt y la procedencia permanecen registrados.
+Dirección: Manrope ExtraBold como referencia visual, fondo crema, verde y naranja, logo arriba a la izquierda, texto El Sembrador / Julio Díaz / Recría · Nutrición · Asesoramiento, retrato frontal de Julio a la derecha.
+
+ENTREGA
+Identidad, transparencia, legibilidad y encuadres revisados en escritorio y móvil a 1280, 900, 390 y 320 px. Compilación y comprobaciones terminadas antes de publicar V5. Se comprobaron HTML, CSS, JS, los tres personajes y la tarjeta social por HTTPS, con hashes idénticos a los archivos finales. El registro detallado está en web/deploy/PUBLICACION-V5-20261028.md.
+Las capturas originales con interfaz y miniaturas privadas permanecen fuera del paquete público. Para futuras modificaciones, compilar y verificar antes de publicar.
