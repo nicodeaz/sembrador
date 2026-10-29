@@ -31,6 +31,14 @@ Las fotografías están incorporadas donde aportan contexto. La versión publica
 ANIMACIÓN
 Un único recorrido al avanzar por la página: huevo → nacimiento → pollito → pollita → gallina. Termina en la granja y sale con el desplazamiento natural.
 No repetir el ciclo, añadir otro huevo final ni mostrar un control de reinicio. Conservar scroll reveal y adaptación a movimiento reducido.
+Cada etapa tiene un fondo realista propio, recortado de fotos reales de la granja (design/photo-backgrounds.py). Se revela en un círculo cuando el personaje llega y tiene un desplazamiento de cámara lento. Al llegar, el personaje hace un movimiento de reposo breve: el huevo se mece, el pollito salta, la pollita picotea y la gallina respira. No usar ilustraciones ni instalaciones dibujadas: la marca se apoya en fotos reales.
+El hero usa la foto real del campo con el caballo y la vaca en la mitad derecha, desvanecida hacia el texto.
+
+NAVEGACIÓN MÓVIL
+Encabezado fijo de 70 px, menú a pantalla completa con números y botón de WhatsApp, y barra inferior con Recría, Raciones, Granja, Julio y WhatsApp que marca la sección actual. Ningún texto por debajo de 10 px.
+
+TIBU
+Se presenta como Jefe de Seguridad y Operaciones, con una credencial verde junto a su nombre.
 
 PERSONAJES: ARCHIVOS FINALES Y PROMPTS UTILIZADOS
 Todas las siguientes piezas se realizaron con la herramienta integrada ImageGen, en modo de edición y fondo transparente. Se conservaron las fotografías originales. Son adaptaciones de imágenes reales y poses recompuestas; no deben describirse como fotografías documentales intactas.

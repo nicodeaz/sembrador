@@ -51,6 +51,19 @@
   const whatsapp = document.querySelector('.floating-whatsapp');
   const links = [...document.querySelectorAll('.cycle-nav a')];
   const linkTargets = links.map(link => document.querySelector(link.getAttribute('href')));
+  const dock = document.querySelector('.mobile-dock');
+  const dockLinks = [...dock.querySelectorAll('a[href^="#"]')];
+  const dockTargets = dockLinks.map(link => document.querySelector(link.getAttribute('href')));
+  const hatchStage = stages[1];
+  // Frame order is egg, hatch, chick, pullet, hen; hatch and chick share the recría stage.
+  const frameStage = [0, 1, 1, 2, 3];
+  const setLanded = landed => stages.forEach((stage, i) => stage.classList.toggle('is-landed', i === landed));
+  const live = () => document.documentElement.classList.toggle('scenes-live', !motion.matches);
+  live();
+  if ('IntersectionObserver' in window) {
+    const visibility = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('is-visible', entry.isIntersecting)), { rootMargin: '80px 0px' });
+    document.querySelectorAll('.cycle-stage, .hero-scene').forEach(scene => visibility.observe(scene));
+  } else document.querySelectorAll('.cycle-stage, .hero-scene').forEach(scene => scene.classList.add('is-visible'));
   const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
   const lerp = (a, b, t) => a + (b - a) * t;
   const ease = n => { const t = clamp(n); return t * t * (3 - 2 * t); };
@@ -88,6 +101,14 @@
     const emerge = ease((hatchProgress - .62) / .33);
     paint(localHatch, 1 - emerge, `translateY(${emerge * 5}%) scale(${1 - emerge * .08})`);
     paint(localChick, emerge, `translateY(${-Math.sin(emerge * Math.PI) * 5}%) scale(${lerp(.69, .88, emerge)})`);
+    hatchStage.classList.toggle('show-chick', emerge > .5);
+    let landed = -1;
+    stages.forEach((stage, i) => {
+      const rect = stage.getBoundingClientRect();
+      const middle = (rect.top + rect.height / 2) / size.height;
+      if (middle > .12 && middle < .88 && landed < 0) landed = i;
+    });
+    setLanded(landed);
     const pulletRect = stages[2].getBoundingClientRect();
     const growth = ease((size.height * .85 - pulletRect.top) / Math.max(1, pulletRect.height));
     stages[2].querySelector('.local-character').style.transform = `scale(${lerp(.72,.95,growth)}) rotate(${lerp(-4,0,growth)}deg)`;
@@ -99,6 +120,15 @@
     const scroll = Math.max(0, window.scrollY);
     const contactRect = contact.getBoundingClientRect();
     whatsapp.classList.toggle('is-visible', scroll > 500 && !(contactRect.top < size.height * .65 && contactRect.bottom > size.height * .2));
+    header.classList.toggle('is-scrolled', scroll > 8);
+    dock.classList.toggle('is-visible', scroll > size.height * .5);
+    let section = -1;
+    dockTargets.forEach((target, i) => { if (target.offsetTop <= scroll + size.height * .5) section = i; });
+    if (contact.offsetTop <= scroll + size.height * .5) section = -1;
+    dockLinks.forEach((link, i) => {
+      if (i === section) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
     let current = 0;
     linkTargets.forEach((target, i) => { if (target.offsetTop <= scroll + size.height * .45) current = i; });
     links.forEach((link, i) => {
@@ -110,6 +140,7 @@
     document.documentElement.classList.toggle('cycle-enabled', enhanced);
     traveler.classList.toggle('is-ready', enhanced);
     if (motion.matches) return;
+    traveler.classList.toggle('is-resting', false);
     if (!enhanced) { localAnimation(); return; }
     if (!frames.length) return;
     let index = 0;
@@ -131,12 +162,23 @@
     const wobble = a.state === 'egg' && raw > .5 && raw < .9 ? Math.sin(raw * 65) * 3 * Math.sin(blend * Math.PI) : 0;
     paint(characters[a.state], a.state===b.state?1:1-blend, `scale(${scale}) rotate(${rotate+wobble}deg)`);
     if (a.state !== b.state) paint(characters[b.state], blend, `translateY(${(1-blend)*3}%) scale(${scale}) rotate(${rotate}deg)`);
+    // The scene opens once the traveler settles; the character then starts its idle movement.
+    const last = frames.length - 1;
+    let nearest = 0;
+    frames.forEach((frame, i) => { if (Math.abs(scroll - frame.scroll) < Math.abs(scroll - frames[nearest].scroll)) nearest = i; });
+    const resting = scroll >= frames[last].scroll || Math.abs(scroll - frames[nearest].scroll) < size.height * .2;
+    const shown = blend > .5 ? b.state : a.state;
+    setLanded(resting ? frameStage[scroll >= frames[last].scroll ? last : nearest] : -1);
+    hatchStage.classList.toggle('show-chick', ['chick', 'pullet', 'hen'].includes(shown));
+    traveler.dataset.life = shown;
+    traveler.classList.toggle('is-resting', resting);
   }
   window.addEventListener('scroll', schedule, { passive:true });
   window.addEventListener('resize', measure, { passive:true });
   window.addEventListener('load', measure, { once:true });
   document.querySelector('.hero-art').addEventListener('animationend', measure, { once:true });
   motion.addEventListener('change', () => {
+    live();
     if (motion.matches) {
       revealObserver?.disconnect();
       revealItems.forEach(item => item.classList.add('is-revealed'));

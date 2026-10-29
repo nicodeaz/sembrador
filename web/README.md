@@ -6,6 +6,8 @@ Publicada el **28/10/2026** en **https://elsembrador.okto.ie**, con indexación 
 
 El recorrido es lineal: **huevo → nacimiento → pollito → pollita → gallina**, y termina en la sección de la granja. No repite el huevo al final ni ofrece reinicio del ciclo. Tiene escenas propias para recría, nutrición, granja, Julio y contacto; conserva el logo original y usa Manrope local con la paleta verde y naranja de la marca. La animación se adapta a móvil y respeta la preferencia de movimiento reducido.
 
+**Cambios preparados después de V5 (sin publicar todavía):** navegación pensada primero para el celular (encabezado fijo, menú a pantalla completa, barra inferior con las secciones y WhatsApp, textos de 10 px o más), hero con la foto real del campo con el caballo y la vaca desvaneciéndose hacia el texto, un fondo realista propio para cada etapa del ciclo que se abre cuando llega el personaje, movimiento de reposo de los personajes (el huevo se mece, el pollito salta, la pollita picotea, la gallina respira), logo sin recuadro y Tibu presentado como Jefe de Seguridad y Operaciones.
+
 Datos confirmados por el usuario: **El Sembrador · Julio Díaz · San Antonio, Ruta 81, km 35,500 · Uruguay**. No se infirió departamento ni zona de cobertura adicional.
 
 La presentación de Julio incorpora la trayectoria aportada por el usuario: comenzó con aves alrededor de los 20 años, conoce a los productores de Canelones, trabajó en Perú, participó en congresos internacionales y trabajó con El Poyote y San Isidro, entre otros. No se calculó ni afirmó un total de años de experiencia.
@@ -39,7 +41,7 @@ Google decide cuándo rastrear e indexar; la configuración técnica no garantiz
 
 El logo original se conserva intacto. La dirección publicada usa verde `#00643b`, naranja `#ff8708`, forest `#003e29`, crema `#fffaf0` y mint `#edf0e3`. Manrope se sirve localmente y los títulos usan peso 800: una sans serif de carácter cercano al logo, sin afirmar que sea su tipografía exacta. Ver [dirección de marca](design/brand-direction.txt).
 
-La composición reparte las fotos entre las secciones y evita una galería independiente. Los pollitos acompañan recría; la rueda, el campo y El Tata forman la escena de la granja. Julio aparece junto a su trayectoria; Tibu acompaña el contacto por WhatsApp y el chanchito con lentes se integra en la granja. Pelotón tiene un pequeño recuerdo dentro de esa escena. El ciclo mantiene un solo recorrido hasta la gallina.
+La composición reparte las fotos entre las secciones y evita una galería independiente. Los pollitos acompañan recría; la rueda, el campo y El Tata forman la escena de la granja. Julio aparece junto a su trayectoria; Tibu, Jefe de Seguridad y Operaciones, acompaña el contacto por WhatsApp y el chanchito con lentes se integra en la granja. Pelotón tiene un pequeño recuerdo dentro de esa escena. El ciclo mantiene un solo recorrido hasta la gallina.
 
 | Personaje | Recurso local | Prompt exacto y procedencia |
 | --- | --- | --- |
@@ -48,6 +50,19 @@ La composición reparte las fotos entre las secciones y evita una galería indep
 | Chanchito con lentes | `assets/characters/chanchito.webp` | [pig-character.txt](design/pig-character.txt) |
 
 Los tres personajes se prepararon con **ImageGen integrado**, a partir de las referencias reales, con poses o encuadres recompuestos y transparencia. Son ediciones, no fotografías documentales intactas. El logo representado sobre la remera no garantiza píxeles idénticos al original; el archivo original sigue siendo la marca principal. Las imágenes originales del usuario permanecen sin modificar.
+
+Fondos realistas, generados con [photo-backgrounds.py](design/photo-backgrounds.py) a partir de esas fotos reales (sin dibujar ni inventar instalaciones):
+
+| Uso | Archivo | Origen |
+| --- | --- | --- |
+| Mitad derecha del hero | `assets/hero/campo-1086.webp`, `campo-700.webp` | `campo.webp`: el caballo y la vaca, con menos cielo |
+| Huevo | `assets/stages/egg.webp` | Viruta del galpón de `pollitos.webp`; se clonó viruta limpia sobre una mancha |
+| Nacimiento | `assets/stages/hatch.webp` | Galpón con pollitos de `pollitas-recria.webp` |
+| Pollito | `assets/stages/chick.webp` | Pollitos sobre viruta de `pollitos.webp` |
+| Pollita | `assets/stages/pullet.webp` | Pasto y árboles de `el-tata.webp` |
+| Gallina | `assets/stages/hen.webp` | Galpón y silo de `granja-vaca.webp`, con el pasto de esa misma foto como suelo |
+
+Las etapas son recortes ampliados con la misma gradación y desenfoque de profundidad de campo. Para volver a generarlos: `python3 design/photo-backgrounds.py` (Python 3 con Pillow y NumPy). `assets/logo-clear.webp` es el logo original con el fondo blanco convertido en transparencia, para que no muestre un recuadro sobre el crema; no se modificaron formas ni colores.
 
 Las fotos preparadas están en `assets/photos/`. Como las fuentes eran capturas de Fotos del teléfono, se retiraron interfaz, márgenes y miniaturas mediante edición con ImageGen. También se quitó el chanchito de la foto de El Tata y a la persona de la foto de la rueda. Los detalles están en [photos-edits.txt](design/photos-edits.txt), [photos-preparation-a.txt](design/photos-preparation-a.txt) y [photos-preparation-b.txt](design/photos-preparation-b.txt). No publicar las capturas originales con su interfaz o tira de miniaturas.
 
