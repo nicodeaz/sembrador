@@ -31,7 +31,7 @@ Las fotografías están incorporadas donde aportan contexto. La versión publica
 ANIMACIÓN
 Un único recorrido al avanzar por la página: huevo → nacimiento → pollito → pollita → gallina. Termina en la granja y sale con el desplazamiento natural.
 No repetir el ciclo, añadir otro huevo final ni mostrar un control de reinicio. Conservar scroll reveal y adaptación a movimiento reducido.
-Cada etapa tiene un fondo realista propio, recortado de fotos reales de la granja (design/photo-backgrounds.py). Se revela en un círculo cuando el personaje llega y tiene un desplazamiento de cámara lento. Al llegar, el personaje hace un movimiento de reposo breve: el huevo se mece, el pollito salta, la pollita picotea y la gallina respira. No usar ilustraciones ni instalaciones dibujadas: la marca se apoya en fotos reales.
+Cada etapa usa una foto real de la granja tal cual, sin desenfoques, ampliaciones ni montajes: huevo sobre disco claro, nacimiento con pollitas-recria, pollito con pollitos, pollita y gallina (más grande) sobre el pasto de El Tata. La foto se revela en el círculo cuando llega el personaje, que hace un movimiento de reposo breve: el huevo se mece, el pollito salta, la pollita picotea y la gallina respira. No usar ilustraciones ni imágenes inventadas.
 El hero usa la foto real del campo con el caballo y la vaca en la mitad derecha, desvanecida hacia el texto.
 
 NAVEGACIÓN MÓVIL

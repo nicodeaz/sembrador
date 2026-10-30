@@ -60,10 +60,6 @@
   const setLanded = landed => stages.forEach((stage, i) => stage.classList.toggle('is-landed', i === landed));
   const live = () => document.documentElement.classList.toggle('scenes-live', !motion.matches);
   live();
-  if ('IntersectionObserver' in window) {
-    const visibility = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('is-visible', entry.isIntersecting)), { rootMargin: '80px 0px' });
-    document.querySelectorAll('.cycle-stage, .hero-scene').forEach(scene => visibility.observe(scene));
-  } else document.querySelectorAll('.cycle-stage, .hero-scene').forEach(scene => scene.classList.add('is-visible'));
   const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
   const lerp = (a, b, t) => a + (b - a) * t;
   const ease = n => { const t = clamp(n); return t * t * (3 - 2 * t); };
